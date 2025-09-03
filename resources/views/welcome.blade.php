@@ -1,6 +1,13 @@
-<x-layout title="Homepage"   >
-
-    <x-header  titleHeader="Benvenuto sul sito"  >
-
-    </x-header>
-</x-layout>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Benvenuti sul sito!</h1>
+    
+    <a href="/chi-siamo">Chi siamo</a>
+</body>
+</html>
