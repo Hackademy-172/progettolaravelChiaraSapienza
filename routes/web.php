@@ -26,3 +26,22 @@ Route::get('/chi-siamo', function () {
     
     return view('chi-siamo', [ "studenti" => $studenti ]   );
 });
+
+Route::get('/dettaglio/{id}', function( $id ){
+
+             $studenti = [
+
+                    [ "id" => 1, "name" => "Gianluca", "surname" => "Foglia" , "age" => 28 , "materia" => "Laravel"  ],
+                    [ "id" => 2, "name" => "Domenico", "surname" => "Mongelli" ,"age" => 24 , "materia" => "HTML" ],
+                    [ "id" => 3, "name" => "Riccardo", "surname" => "Malla", "age" => 22 , "materia" => "CSS3"   ],
+                    [ "id" => 4, "name" => "Pietro", "surname" => "Losciale" , "age" => 27 , "materia" => "OOP"  ],
+                ];
+
+                foreach($studenti as $studente ){
+                    if($id == $studente["id"]){
+                       
+                        return view( "dettaglio-studente", ["studente" => $studente]  );
+                    }
+                } 
+
+});
