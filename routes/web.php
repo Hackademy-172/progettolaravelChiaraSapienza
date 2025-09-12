@@ -24,24 +24,154 @@ Route::get('/chi-siamo', function () {
         
     ];
     
+    //Questa rotta restituisce sia la vista ma passa anche un dato alla vista che in questo caso è l'intero array di array chiave valore
     return view('chi-siamo', [ "studenti" => $studenti ]   );
 });
 
+//la rotta parametrica si chiama cosi perchè nell'uri c'è il parametro
 Route::get('/dettaglio/{id}', function( $id ){
+    //questo è l'array che contiene al suo interno altri array
+    $studenti = [
+        //ogni array interno possiede come chiave valore anche un elemento chiamato id
+        [ "id" => 1, "name" => "Gianluca", "surname" => "Foglia" , "age" => 28 , "materia" => "Laravel"  ],
+        [ "id" => 2, "name" => "Domenico", "surname" => "Mongelli" ,"age" => 24 , "materia" => "HTML" ],
+        [ "id" => 3, "name" => "Riccardo", "surname" => "Malla", "age" => 22 , "materia" => "CSS3"   ],
+        [ "id" => 4, "name" => "Pietro", "surname" => "Losciale" , "age" => 27 , "materia" => "OOP"  ],
+    ];
+    
+    //il foreach cicle tutto l'array grande per estrarre ogni singolo array più piccolo
+    foreach($studenti as $studente ){
+        //questo "if" confronta se l'id passato come parametro è uguale alla chiave id del singolo array analizzato
+        if($id == $studente["id"]){
+            //Questa rotta restituisce sia la vista ma passa anche un dato alla vista che in questo caso è l'unico array chiave valore trovato
+            //l'array chiave valore trovato corrisponde all'array che possiede valore della chiave id lo stesso valore dell'id passato come parametro
+            return view( "dettaglio-studente", ["studente" => $studente]  );
+        }
+    } 
+    
+});
 
-             $studenti = [
 
-                    [ "id" => 1, "name" => "Gianluca", "surname" => "Foglia" , "age" => 28 , "materia" => "Laravel"  ],
-                    [ "id" => 2, "name" => "Domenico", "surname" => "Mongelli" ,"age" => 24 , "materia" => "HTML" ],
-                    [ "id" => 3, "name" => "Riccardo", "surname" => "Malla", "age" => 22 , "materia" => "CSS3"   ],
-                    [ "id" => 4, "name" => "Pietro", "surname" => "Losciale" , "age" => 27 , "materia" => "OOP"  ],
-                ];
 
-                foreach($studenti as $studente ){
-                    if($id == $studente["id"]){
-                       
-                        return view( "dettaglio-studente", ["studente" => $studente]  );
-                    }
-                } 
 
+
+
+Route::get('/redazione', function () {
+    $redattori = [
+        
+        [ "id" => 1, "name" => "Simone", "focus" => "Pokémon" ],
+        [ "id" => 2, "name" => "Ilaria", "focus" => "Super Mario" ],
+        ["id" => 3, "name" => "Elena", "focus" => "Zelda" ],
+        [ "id" => 4, "name" => "Chiara", "Focus" => "Animal Crossing" ],
+        
+    ];
+    
+    return view('redazione', [ "redattori" => $redattori ]   );
+});
+
+
+
+Route::get('/dettaglio/{id}', function( $id ){
+    $redattori = [
+        [ "id" => 1, "name" => "Simone", "focus" => "Pokémon" , "age" => 30 ],
+        [ "id" => 2, "name" => "Ilaria", "focus" => "Super Mario" ,"age" => 26  ],
+        [ "id" => 3, "name" => "Elena", "Focus" => "Zelda", "age" => 27    ],
+        [ "id" => 4, "name" => "Chiara", "Focus" => "Animal Crossing" , "age" => 27  ],
+    ];
+    
+    foreach($redattori as $redattore ){if 
+($id == $redattore["id"]){
+         return view( "dettaglio-redattore", ["redattore" => $redattore]  );
+        }
+    } 
+    
+});
+
+
+
+
+
+Route::get('/redazione', function () {
+    $redattori = [
+            
+        [ "id" => 1, "name" => "Simone", "focus" => "Pokémon" ],
+        [ "id" => 2, "name" => "Ilaria", "focus" => "Super Mario" ],
+        ["id" => 3, "name" => "Elena", "focus" => "Zelda" ],
+        [ "id" => 4, "name" => "Chiara", "Focus" => "Animal Crossing" ],
+        
+    ];    
+    return view('redazione', [ "redattori" => $redattori ]   );
+});
+
+
+Route::get('/redazione', function () {
+    $redattori = [
+            
+        [ "id" => 1, "name" => "Simone", "focus" => "Pokémon" ],
+        [ "id" => 2, "name" => "Ilaria", "focus" => "Super Mario" ],
+        ["id" => 3, "name" => "Elena", "focus" => "Zelda" ],
+        [ "id" => 4, "name" => "Chiara", "Focus" => "Animal Crossing" ],
+        
+    ];    
+    return view('redazione', [ "redattori" => $redattori ]   );
+});
+
+
+Route::get('/redazione', function () {
+    $redattori = [
+            
+        [ "id" => 1, "name" => "Simone", "focus" => "Pokémon" ],
+        [ "id" => 2, "name" => "Ilaria", "focus" => "Super Mario" ],
+        ["id" => 3, "name" => "Elena", "focus" => "Zelda" ],
+        [ "id" => 4, "name" => "Chiara", "Focus" => "Animal Crossing" ],
+        
+    ];    
+    return view('redazione', [ "redattori" => $redattori ]   );
+});
+
+
+Route::get('/dettaglio/{id}', function( $id ){
+    $redattori = [
+        [ "id" => 1, "name" => "Simone", "focus" => "Pokémon" , "age" => 30 ],
+        [ "id" => 2, "name" => "Ilaria", "focus" => "Super Mario" ,"age" => 26  ],
+        [ "id" => 3, "name" => "Elena", "Focus" => "Zelda", "age" => 27    ],
+        [ "id" => 4, "name" => "Chiara", "Focus" => "Animal Crossing" , "age" => 27  ],
+    ];    
+    foreach($redattori as $redattore ){if 
+($id == $redattore["id"]){
+         return view( "dettaglio-redattore", ["redattore" => $redattore]  );
+        }
+    }     
+});
+
+
+
+Route::get('/dettaglio/{id}', function( $id ){
+    $redattori = [
+        [ "id" => 1, "name" => "Simone", "focus" => "Pokémon" , "age" => 30 ],
+        [ "id" => 2, "name" => "Ilaria", "focus" => "Super Mario" ,"age" => 26  ],
+        [ "id" => 3, "name" => "Elena", "Focus" => "Zelda", "age" => 27    ],
+        [ "id" => 4, "name" => "Chiara", "Focus" => "Animal Crossing" , "age" => 27  ],
+    ];    
+    foreach($redattori as $redattore ){if 
+($id == $redattore["id"]){
+         return view( "dettaglio-redattore", ["redattore" => $redattore]  );
+        }
+    }     
+});
+
+
+
+Route::get('/dettaglio/{id}', function( $id ){
+    $redattori = [
+        [ "id" => 1, "name" => "Simone", "focus" => "Pokémon" , "age" => 30 ],
+        [ "id" => 2, "name" => "Ilaria", "focus" => "Super Mario" ,"age" => 26  ],
+        [ "id" => 3, "name" => "Elena", "Focus" => "Zelda", "age" => 27    ],
+        [ "id" => 4, "name" => "Chiara", "Focus" => "Animal Crossing" , "age" => 27  ],
+    ];    
+    foreach($redattori as $redattore ){if 
+($id == $redattore["id"]){
+         return view( "dettaglio-redattore", ["redattore" => $redattore]  );
+        }
+    }     
 });
